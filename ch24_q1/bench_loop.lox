@@ -1,0 +1,6 @@
+var i = 0;
+var start = clock();
+while (i < 20000000) {
+  i = i + 1;
+}
+print clock() - start;
