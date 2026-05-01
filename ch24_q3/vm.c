@@ -942,3 +942,18 @@ InterpretResult interpret(const char* source) {
 //< Compiling Expressions interpret-chunk
 }
 //< interpret
+static bool sqrtNative(int argCount, Value* args, Value* result) {
+  if (!IS_NUMBER(args[0])) {
+    runtimeError("sqrt() argument must be a number.");
+    return false;
+  }
+
+  double x = AS_NUMBER(args[0]);
+  if (x < 0) {
+    runtimeError("sqrt() argument must be non-negative.");
+    return false;
+  }
+
+  *result = NUMBER_VAL(sqrt(x));
+  return true;
+}
